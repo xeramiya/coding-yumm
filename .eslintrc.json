@@ -1,3 +1,28 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "plugins": [
+  ],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "rules": {
+  },
+  "settings": {
+    "tailwindcss": {
+       "groupByResponsive": true,
+       "whitelist": []
+     }
+   },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ]
+    }
+  ]
 }

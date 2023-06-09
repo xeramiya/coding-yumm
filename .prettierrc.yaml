@@ -1,0 +1,13 @@
+tailwindConfig: ./tailwind.config.js
+overrides:
+  - files:
+      - "*.md"
+      - README
+    options:
+      parser: markdown-nocjsp
+  - files:
+      - "*.mdx"
+    options:
+      parser: markdown-nocjsp
+plugins:
+  - prettier-plugin-tailwindcss
