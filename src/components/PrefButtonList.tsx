@@ -7,12 +7,10 @@ type ResasPrefecture = {
   prefName: string;
 };
 
-const PrefButtonList = async () => {
-  const prefectures = await getResasData("api/v1/prefectures");
-
+const PrefButtonList = async ({ prefDatas }: { prefDatas: Array<ResasPrefecture> }) => {
   return (
     <ul>
-      {prefectures.map((elem: ResasPrefecture) => {
+      {prefDatas.map((elem: ResasPrefecture) => {
         return (
           <li key={elem.prefCode}>
             <PrefButton prefData={elem} />
