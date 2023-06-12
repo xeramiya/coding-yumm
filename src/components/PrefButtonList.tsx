@@ -1,16 +1,16 @@
 import useSWR from "swr";
 import { getResasData } from "lib/api";
 import PrefButton from "components/PrefButton";
+import { ResasPref } from "lib/type";
 
-type ResasPrefecture = {
-  prefCode: number;
-  prefName: string;
-};
-
-const PrefButtonList = async ({ prefDatas }: { prefDatas: Array<ResasPrefecture> }) => {
+const PrefButtonList = async ({
+  prefDatas,
+}: {
+  prefDatas: Array<ResasPref>;
+}) => {
   return (
     <ul>
-      {prefDatas.map((elem: ResasPrefecture) => {
+      {prefDatas.map((elem: ResasPref) => {
         return (
           <li key={elem.prefCode}>
             <PrefButton prefData={elem} />

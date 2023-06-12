@@ -1,15 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ResasPref } from "lib/type";
 
-type ResasPrefecture = {
-  prefCode: number;
-  prefName: string;
-};
-
-const PrefButton = async ({ prefData }: { prefData: ResasPrefecture }) => {
+const PrefButton = async ({ prefData }: { prefData: ResasPref }) => {
   const [prefButtonId, setPrefButtonId] = useState(
-    `PrefButton-${prefData.prefCode}`
+    `prefButton-${prefData.prefCode}`
   );
 
   const togglePref = (event: React.ChangeEvent<HTMLInputElement>) => {
