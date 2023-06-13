@@ -13,7 +13,6 @@ export const getResasData = async (params: string) => {
       headers: { "X-API-KEY": resasApiKey },
     })
       .then((res) => {
-        console.log("DEBUG: GET!") // デバッグ用
         return res.json();
       })
       .catch((err) => {
@@ -25,7 +24,3 @@ export const getResasData = async (params: string) => {
     return;
   }
 };
-
-/**
- *
- */
