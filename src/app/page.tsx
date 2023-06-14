@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
-import PrefButtonList from "components/PrefButtonPanel/PrefButtonList";
 import PrefChart from "components/PrefChart";
+import PrefButtonPanel from "components/PrefButtonPanel/PrefButtonPanel";
 import { CheckedPrefsProvider } from "context/CheckedPrefsProvider";
 import { getResasData } from "lib/api";
 import { ResasPref, ResasPrefPopComp } from "lib/type";
@@ -27,7 +27,11 @@ export default async function Home() {
           <hr />
           <section>
             <h3>ボタン</h3>
-            <PrefButtonList prefDatas={prefDatas} />
+            <DemogrButtonPanel />
+          </section>
+          <section>
+            <h3>ボタン</h3>
+            <PrefButtonPanel prefDatas={prefDatas} />
           </section>
         </article>
       </CheckedPrefsProvider>
