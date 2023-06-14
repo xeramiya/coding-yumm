@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ResponsiveContainer,
   LineChart,
@@ -11,33 +11,39 @@ import {
   Tooltip,
 } from "recharts";
 
-import {} from "lib/api";
 import {
   ResasPrefPopComp,
   ResasPrefPopCompData1,
   ResasPrefPopCompData2,
+  CheckedPref,
 } from "lib/type";
+
+import {
+  useCheckedPrefsValue,
+  CheckedPrefsContext,
+} from "context/CheckedPrefsProvider";
 
 const PrefChart = ({
   prefPopComps,
 }: {
   prefPopComps: Array<ResasPrefPopComp>;
 }) => {
-  const data = [
-    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-    { name: "Page B", uv: 200, pv: 2100, amt: 2300 },
-  ];
+  console.log("GRAPH");
+  console.log(prefPopComps[0].data[0].data);
+  const checkedPrefs = useCheckedPrefsValue();
+  const dataOne = prefPopComps[0].data[0].data;
 
   return (
     <div>
+      <div>CODES: {checkedPrefs}</div>
       <ResponsiveContainer width="100%" aspect={1.6}>
         <LineChart
-          data={data}
-          margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+          data={dataOne}
+          margin={{ top: 10, right: 60, bottom: 20, left: 30 }}
         >
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+          <Line type="monotone" dataKey="value" stroke="#008899" />
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="year" />
           <YAxis />
           <Tooltip />
         </LineChart>

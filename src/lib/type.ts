@@ -6,17 +6,23 @@ export type ResasPref = {
 
 // RESAS API response 人口構成
 export type ResasPrefPopComp = {
-  boundaryYear: number
-  data: Array<ResasPrefPopCompData1>
-}
+  boundaryYear: number;
+  data: Array<ResasPrefPopCompData1>;
+};
 
 export type ResasPrefPopCompData1 = {
-  label: string
-  data: Array<ResasPrefPopCompData2>
-}
+  label: string;
+  data: Array<ResasPrefPopCompData2>;
+};
 
 export type ResasPrefPopCompData2 = {
-year: number
-value: number
-rate?: number
-}
+  year: number;
+  value: number;
+  rate?: number;
+};
+
+// 都道府県ボタンのチェック状態管理用
+export type CheckedPref = {
+  codes: Array<number>;
+  setCodes: (code: Array<number>) => void;
+};
