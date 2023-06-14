@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import PrefButtonList from "components/PrefButtonList";
+import PrefButtonList from "components/PrefButtonPanel/PrefButtonList";
 import PrefChart from "components/PrefChart";
 import { CheckedPrefsProvider } from "context/CheckedPrefsProvider";
 import { getResasData } from "lib/api";
