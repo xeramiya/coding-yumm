@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import { ResasPref, CheckedPref } from "lib/type";
+import { ResasPref } from "lib/type";
 
 import {
   useCheckedPrefsValue,

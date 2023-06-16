@@ -20,9 +20,3 @@ export type ResasPrefPopCompData2 = {
   value: number;
   rate?: number;
 };
-
-// 都道府県ボタンのチェック状態管理用
-export type CheckedPref = {
-  codes: Array<number>;
-  setCodes: (code: Array<number>) => void;
-};

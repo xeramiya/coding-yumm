@@ -12,29 +12,44 @@ import {
 } from "recharts";
 
 import {
+  ResasPref,
   ResasPrefPopComp,
   ResasPrefPopCompData1,
   ResasPrefPopCompData2,
-  CheckedPref,
 } from "lib/type";
 
 import { useCheckedPrefsValue } from "context/CheckedPrefsProvider";
 import { useSelectedDemogrValue } from "context/SelectedDemogrProvider";
 
 const PrefChart = ({
+  prefDatas,
   prefPopComps,
 }: {
+  prefDatas: Array<ResasPref>;
   prefPopComps: Array<ResasPrefPopComp>;
 }) => {
   console.log("GRAPH");
-  console.log(prefPopComps[0].data[0].data);
   const checkedPrefs = useCheckedPrefsValue();
   const selectedDemogr = useSelectedDemogrValue();
-  const [data, setData] = useState<Array<ResasPrefPopCompData2>>([]);
 
-  if (checkedPrefs[0]) {
-    setData(prefPopComps[checkedPrefs[0] - 1].data[selectedDemogr].data);
-  }
+  let data: Array<{ [key: string]: number }> = [];
+
+  checkedPrefs.map((checkedPref) => {
+    const checkedPrefIndex = checkedPref - 1;
+
+    if (!data.length) {
+      prefPopComps[checkedPrefIndex].data[selectedDemogr].data.map((elem) => {
+        data.push({ year: elem.year });
+      });
+    }
+    prefPopComps[checkedPrefIndex].data[selectedDemogr].data.map(
+      (elem, index) => {
+        data[index][prefDatas[checkedPrefIndex].prefName] = elem.value;
+      }
+    );
+  });
+
+  console.log(data);
 
   return (
     <div>
@@ -44,7 +59,15 @@ const PrefChart = ({
           data={data}
           margin={{ top: 10, right: 60, bottom: 20, left: 30 }}
         >
-          <Line type="monotone" dataKey="value" stroke="#008899" />
+          {checkedPrefs.map((elem) => {
+            return (
+              <Line
+                key={elem}
+                type="monotone"
+                dataKey={prefDatas[elem - 1].prefName}
+              />
+            );
+          })}
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
           <XAxis dataKey="year" />
           <YAxis />

@@ -25,6 +25,7 @@ const DemogrButtonPanel = () => {
       value: 3,
     },
   ];
+  // VALUEをなくせ！
 
   const demogrButtonIdPrefix = `demogrButton-`;
   const setSelectedDemogr = useSetSelectedDemogrValue();
@@ -37,7 +38,7 @@ const DemogrButtonPanel = () => {
     setSelectedDemogr(targetValue);
   };
 
-  console.log("RENDERED: DEMOGUR BUTTON PANEL")
+  console.log("RENDERED: DEMOGUR BUTTON PANEL");
   return (
     <ul>
       {allDemogrs.map((elem) => {

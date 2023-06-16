@@ -25,7 +25,7 @@ export default async function Home() {
           <article>
             <section>
               <h3>グラフ</h3>
-              <PrefChart prefPopComps={prefPopComps} />
+              <PrefChart prefDatas={prefDatas} prefPopComps={prefPopComps} />
             </section>
             <hr />
             <section>
