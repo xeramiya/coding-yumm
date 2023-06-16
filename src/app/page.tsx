@@ -1,7 +1,9 @@
 import React, { Suspense } from "react";
 import PrefChart from "components/PrefChart";
 import PrefButtonPanel from "components/PrefButtonPanel/PrefButtonPanel";
+import DemogrButtonPanel from "components/DemogrButtonPanel";
 import { CheckedPrefsProvider } from "context/CheckedPrefsProvider";
+import { SelectedDemogrProvider } from "context/SelectedDemogrProvider";
 import { getResasData } from "lib/api";
 import { ResasPref, ResasPrefPopComp } from "lib/type";
 
@@ -19,21 +21,23 @@ export default async function Home() {
   return (
     <div>
       <CheckedPrefsProvider>
-        <article>
-          <section>
-            <h3>グラフ</h3>
-            <PrefChart prefPopComps={prefPopComps} />
-          </section>
-          <hr />
-          <section>
-            <h3>ボタン</h3>
-            <DemogrButtonPanel />
-          </section>
-          <section>
-            <h3>ボタン</h3>
-            <PrefButtonPanel prefDatas={prefDatas} />
-          </section>
-        </article>
+        <SelectedDemogrProvider>
+          <article>
+            <section>
+              <h3>グラフ</h3>
+              <PrefChart prefPopComps={prefPopComps} />
+            </section>
+            <hr />
+            <section>
+              <h3>ボタン</h3>
+              <DemogrButtonPanel />
+            </section>
+            <section>
+              <h3>ボタン</h3>
+              <PrefButtonPanel prefDatas={prefDatas} />
+            </section>
+          </article>
+        </SelectedDemogrProvider>
       </CheckedPrefsProvider>
     </div>
   );

@@ -18,10 +18,8 @@ import {
   CheckedPref,
 } from "lib/type";
 
-import {
-  useCheckedPrefsValue,
-  CheckedPrefsContext,
-} from "context/CheckedPrefsProvider";
+import { useCheckedPrefsValue } from "context/CheckedPrefsProvider";
+import { useSelectedDemogrValue } from "context/SelectedDemogrProvider";
 
 const PrefChart = ({
   prefPopComps,
@@ -31,14 +29,19 @@ const PrefChart = ({
   console.log("GRAPH");
   console.log(prefPopComps[0].data[0].data);
   const checkedPrefs = useCheckedPrefsValue();
-  const dataOne = prefPopComps[0].data[0].data;
+  const selectedDemogr = useSelectedDemogrValue();
+  const [data, setData] = useState<Array<ResasPrefPopCompData2>>([]);
+
+  if (checkedPrefs[0]) {
+    setData(prefPopComps[checkedPrefs[0] - 1].data[selectedDemogr].data);
+  }
 
   return (
     <div>
-      <div>CODES: {checkedPrefs}</div>
+      <div>DEMOGR: {selectedDemogr}</div>
       <ResponsiveContainer width="100%" aspect={1.6}>
         <LineChart
-          data={dataOne}
+          data={data}
           margin={{ top: 10, right: 60, bottom: 20, left: 30 }}
         >
           <Line type="monotone" dataKey="value" stroke="#008899" />
