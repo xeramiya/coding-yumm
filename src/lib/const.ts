@@ -1,5 +1,5 @@
 // 都道府県グラフ用のカラーコード
-export const colorPallet = [
+export const CHART_LINE_COLORS = [
   "#ef4444",
   "#84cc16",
   "#06b6d4",

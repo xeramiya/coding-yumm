@@ -18,7 +18,7 @@ import {
   ResasPrefPopCompData1,
   ResasPrefPopCompData2,
 } from "lib/type";
-import { colorPallet } from "lib/const";
+import { CHART_LINE_COLORS } from "lib/const";
 
 import { useCheckedPrefsValue } from "context/CheckedPrefsProvider";
 import { useSelectedDemogrValue } from "context/SelectedDemogrProvider";
@@ -54,35 +54,33 @@ const PrefChart = ({
   console.log(data);
 
   return (
-    <div>
-      <div>DEMOGR: {selectedDemogr}</div>
-      <ResponsiveContainer width="100%" aspect={1.6}>
-        <LineChart
-          data={data}
-          margin={{ top: 10, right: 60, bottom: 20, left: 30 }}
-        >
-          <CartesianGrid strokeDasharray="4 2" stroke="#ccc" />
-          <XAxis dataKey="year" interval={3} unit="年" stroke="" />
-          <YAxis interval="preserveStartEnd" stroke="" />
-          <Tooltip />
-          <Legend />
-          {checkedPrefs.map((elem, index) => {
-            return (
-              <Line
-                key={elem}
-                type="monotone"
-                strokeWidth="1.5"
-                dataKey={prefDatas[elem - 1].prefName}
-                unit="人"
-                stroke={
-                  colorPallet[index] ?? colorPallet[colorPallet.length - 1]
-                }
-              />
-            );
-          })}
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" aspect={1.6}>
+      <LineChart
+        data={data}
+        margin={{ top: 10, right: 60, bottom: 20, left: 30 }}
+      >
+        <CartesianGrid strokeDasharray="4 2" stroke="#ccc" />
+        <XAxis dataKey="year" interval={3} unit="年" stroke="" />
+        <YAxis interval="preserveStartEnd" stroke="" />
+        <Tooltip />
+        <Legend />
+        {checkedPrefs.map((elem, index) => {
+          return (
+            <Line
+              key={elem}
+              type="monotone"
+              strokeWidth="1.5"
+              dataKey={prefDatas[elem - 1].prefName}
+              unit="人"
+              stroke={
+                CHART_LINE_COLORS[index] ??
+                CHART_LINE_COLORS[CHART_LINE_COLORS.length - 1]
+              }
+            />
+          );
+        })}
+      </LineChart>
+    </ResponsiveContainer>
   );
 };
 

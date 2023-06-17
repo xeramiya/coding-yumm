@@ -1,20 +1,23 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { ResasPref } from "lib/type";
 
 import {
   useCheckedPrefsValue,
   useSetCheckedPrefsValue,
-  CheckedPrefsContext,
-  SetCheckedPrefsContext,
 } from "context/CheckedPrefsProvider";
 
-const PrefButton = async ({ prefData }: { prefData: ResasPref }) => {
+import { CHART_LINE_COLORS } from "lib/const";
+
+const PrefButton = ({ prefData }: { prefData: ResasPref }) => {
   const prefButtonIdPrefix = `prefButton-`;
   const prefButtonId = `${prefButtonIdPrefix}${prefData.prefCode}`;
+  const defaultColor = "#00000000";
 
   const setCheckedPrefs = useSetCheckedPrefsValue();
+  const checkedPrefs = useCheckedPrefsValue();
+  const [color, setColor] = useState(defaultColor);
 
   // 都道府県ボタンが押された時
   const togglePref = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +28,7 @@ const PrefButton = async ({ prefData }: { prefData: ResasPref }) => {
     );
     console.log("TARGET", targetCode); // 4 DEBUG
 
-    // チェックがついていたか
+    // チェックがついたか
     if (event.target.checked) {
       console.log("ついたよ！");
       setCheckedPrefs((prev) => {
@@ -33,16 +36,32 @@ const PrefButton = async ({ prefData }: { prefData: ResasPref }) => {
       });
     } else {
       console.log("消えたよ！");
+      setColor(defaultColor);
       setCheckedPrefs((prev) => prev.filter((elem) => elem !== targetCode));
     }
   };
   console.log("なんでや！", prefData.prefName);
 
+  useEffect(() => {
+    const checkedPrefsIndex = checkedPrefs.indexOf(prefData.prefCode);
+    if (CHART_LINE_COLORS.length > checkedPrefsIndex) {
+      setColor(CHART_LINE_COLORS[checkedPrefsIndex]);
+    } else {
+      setColor(CHART_LINE_COLORS[CHART_LINE_COLORS.length - 1]);
+    }
+  }, [prefData, checkedPrefs]);
+
   return (
-    <label htmlFor={prefButtonId} className="bg-slate-400">
-      <input type="checkbox" id={prefButtonId} onChange={togglePref} />
-      {prefData.prefName}
-    </label>
+    <div style={{ border: `solid 2px ${color}` }}>
+      <label htmlFor={prefButtonId}>
+        <input
+          type="checkbox"
+          id={prefButtonId}
+          onChange={(event) => togglePref(event)}
+        />
+        {prefData.prefName}
+      </label>
+    </div>
   );
 };
 
