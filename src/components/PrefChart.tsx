@@ -70,7 +70,6 @@ const PrefChart = ({
             backdropFilter: "blur(9px)",
           }}
         />
-        <Legend iconSize={0} wrapperStyle={{fontSize: "0.8rem"}}/>
         {checkedPrefs.map((elem, index) => {
           return (
             <Line
