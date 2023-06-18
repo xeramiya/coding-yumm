@@ -52,13 +52,16 @@ const PrefButton = ({ prefData }: { prefData: ResasPref }) => {
   }, [prefData, checkedPrefs]);
 
   return (
-    <div style={{ border: `solid 2px ${color}` }}>
-      <label htmlFor={prefButtonId}>
-        <input
-          type="checkbox"
-          id={prefButtonId}
-          onChange={(event) => togglePref(event)}
-        />
+    <div className="pref-button">
+      <input
+        type="checkbox"
+        id={prefButtonId}
+        onChange={(event) => togglePref(event)}
+      />
+      <label
+        htmlFor={prefButtonId}
+        style={{ border: `solid 2px ${color}` }}
+      >
         {prefData.prefName}
       </label>
     </div>

@@ -9,7 +9,7 @@ const PrefButtonList = async ({
   prefDatas: Array<ResasPref>;
 }) => {
   return (
-    <ul>
+    <ul className="pref-button-panel">
       {prefDatas.map((elem: ResasPref) => {
         return (
           <li key={elem.prefCode}>

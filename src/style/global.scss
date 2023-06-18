@@ -1,0 +1,168 @@
+/* TailwindCSSは開発時のみ使用 */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// 使用色
+$background-color: #f7f6f4;
+$error-color: #ba160c;
+$char-main-color: #252b2c;
+$char-note-color: #aaa59d;
+$shadow-color: #e9e9e9;
+$media-color: #ffffff;
+$media-invert: #000000;
+$font-sans: var(--font-mplus2), sans-serif;
+$font-mono: "SF Mono", "Menlo", "Roboto Mono", "Droid Sans Mono",
+  "Lucida Sans Typewriter", "Courier New", "Courier", "monospace";
+
+// ブレークポイント
+$bp-mid: 960px;
+$bp-lar: 1280px;
+$breakpoints: (
+  mid: "screen and (min-width: 960px)",
+  lar: "screen and (min-width: 1280px)",
+) !default;
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+/* 全体 */
+html {
+  background-color: $background-color;
+  color: $char-main-color;
+  font-family: $font-sans;
+}
+
+body {
+  height: 100vh;
+}
+
+/* Header */
+header {
+  height: 3rem;
+  user-select: none;
+  backdrop-filter: blur(12px);
+  width: 100%;
+}
+
+.homelink {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  float: left;
+  display: flex;
+  font-size: 1.2rem;
+  align-items: center;
+}
+
+.homeicon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+/* main */
+main {
+  padding-top: 0rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @include mq(mid) {
+    max-width: $bp-mid;
+  }
+}
+
+.section-caption {
+  display: none;
+}
+
+/* DemogrButtonPanel */
+.demogr-button-panel {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 0.4rem;
+  background-color: $shadow-color;
+}
+
+.demogr-button {
+  display: flex;
+  border-radius: 0.4rem;
+  color: $char-note-color;
+  & :hover {
+    color: $media-invert;
+  }
+  input[type="radio"] {
+    display: none;
+  }
+  & label {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.4rem;
+    box-sizing: border-box;
+  }
+  input[type="radio"]:checked + label {
+    background-color: $background-color;
+    color: $char-main-color;
+  }
+}
+
+/* PrefButtonPanel */
+.pref-button-panel {
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pref-button {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+  display: flex;
+  & :hover {
+    color: $media-invert;
+  }
+  & label {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    color: $char-note-color;
+    background-color: $shadow-color;
+  }
+  input[type="checkbox"]:checked + label {
+    background-color: $background-color;
+    color: $char-main-color;
+    // borderはcomponent内で定義
+  }
+}
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Footer */
+footer {
+  margin-top: 4rem;
+  position: sticky;
+  top: 100vh;
+  user-select: none;
+  text-align: right;
+  color: $char-note-color;
+  & .repolink {
+    margin: 0.6rem;
+  }
+}

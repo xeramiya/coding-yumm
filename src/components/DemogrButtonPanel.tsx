@@ -40,22 +40,20 @@ const DemogrButtonPanel = () => {
 
   console.log("RENDERED: DEMOGUR BUTTON PANEL");
   return (
-    <ul>
+    <ul className="demogr-button-panel">
       {allDemogrs.map((elem) => {
         const demogrButtonId = `${demogrButtonIdPrefix}${elem.value}`;
 
         return (
-          <li key={elem.value}>
-            <label htmlFor={demogrButtonId}>
-              <input
-                type="radio"
-                name="demogrButton"
-                id={demogrButtonId}
-                onChange={changeDemogr}
-                checked={elem.value === selectedDemogur}
-              />
-              {elem.name}
-            </label>
+          <li key={elem.value} className="demogr-button">
+            <input
+              type="radio"
+              name="demogrButton"
+              id={demogrButtonId}
+              onChange={changeDemogr}
+              checked={elem.value === selectedDemogur}
+            />
+            <label htmlFor={demogrButtonId}>{elem.name}</label>
           </li>
         );
       })}

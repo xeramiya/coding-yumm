@@ -57,13 +57,20 @@ const PrefChart = ({
     <ResponsiveContainer width="100%" aspect={1.6}>
       <LineChart
         data={data}
-        margin={{ top: 10, right: 60, bottom: 20, left: 30 }}
+        margin={{ top: 20, right: 30, bottom: 30, left: 30 }}
       >
         <CartesianGrid strokeDasharray="4 2" stroke="#ccc" />
         <XAxis dataKey="year" interval={3} unit="年" stroke="" />
         <YAxis interval="preserveStartEnd" stroke="" />
-        <Tooltip />
-        <Legend />
+        <Tooltip
+          itemSorter={() => 1}
+          animationDuration={200}
+          contentStyle={{
+            backgroundColor: "#ffffff22",
+            backdropFilter: "blur(9px)",
+          }}
+        />
+        <Legend iconSize={0} wrapperStyle={{fontSize: "0.8rem"}}/>
         {checkedPrefs.map((elem, index) => {
           return (
             <Line
@@ -72,6 +79,7 @@ const PrefChart = ({
               strokeWidth="1.5"
               dataKey={prefDatas[elem - 1].prefName}
               unit="人"
+              animationDuration={600}
               stroke={
                 CHART_LINE_COLORS[index] ??
                 CHART_LINE_COLORS[CHART_LINE_COLORS.length - 1]
