@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * ヘッダー
+ */
 export const Header = () => {
   return (
     <header>

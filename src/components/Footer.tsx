@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import packageJson from "../../package.json";
-
+/**
+ * フッター
+ */
 export const Footer = () => {
   return (
     <footer>

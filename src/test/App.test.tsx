@@ -3,7 +3,6 @@ import "cross-fetch/polyfill";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import DemogrButtonPanel from "components/DemogrButtonPanel";
-import { SelectedDemogrProvider } from "context/SelectedDemogrProvider";
 import PrefButtonPanel from "components/PrefButtonPanel/PrefButtonPanel";
 import PrefButton from "components/PrefButtonPanel/PrefButton";
 

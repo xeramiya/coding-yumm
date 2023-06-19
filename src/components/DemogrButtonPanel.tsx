@@ -6,7 +6,11 @@ import {
   useSetSelectedDemogrValue,
 } from "context/SelectedDemogrProvider";
 
+/**
+ * 人口構成ボタンパネル
+ */
 const DemogrButtonPanel = () => {
+  // 全ての人口構成ボタンを用意 (valueはAPI返値の配列インデックス)
   const allDemogrs = [
     {
       name: "総人口",
@@ -25,29 +29,24 @@ const DemogrButtonPanel = () => {
       value: 3,
     },
   ];
-  // VALUEをなくせ！
 
   const demogrButtonIdPrefix = `demogrButton-`;
   const setSelectedDemogr = useSetSelectedDemogrValue();
   const selectedDemogur = useSelectedDemogrValue();
 
+  // ラジオボタンを押された時の処理
   const changeDemogr = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("おされた！")
+    // ボタンのidからalldmogrsのvalueに当たる部分を抽出
     const targetValue = Number(
       event.target.id.substring(demogrButtonIdPrefix.length)
     );
     setSelectedDemogr(targetValue);
-    console.log('TARGET:', targetValue)
-    console.log('SELECTED:', selectedDemogur)
   };
 
-  console.log("RENDERED: DEMOGUR BUTTON PANEL");
-  console.log("selectedDemogr", selectedDemogur)
   return (
     <ul className="demogr-button-panel">
       {allDemogrs.map((elem) => {
         const demogrButtonId = `${demogrButtonIdPrefix}${elem.value}`;
-
         return (
           <li key={elem.value} className="demogr-button">
             <input

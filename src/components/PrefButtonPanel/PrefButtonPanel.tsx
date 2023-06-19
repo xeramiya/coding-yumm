@@ -1,8 +1,9 @@
-import useSWR from "swr";
-import { getResasData } from "lib/api";
 import PrefButton from "components/PrefButtonPanel/PrefButton";
 import { ResasPref } from "lib/type";
 
+/**
+ * 都道府県ボタンパネル
+ */
 const PrefButtonPanel = ({
   prefDatas,
 }: {

@@ -1,6 +1,5 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
 import {
   ResponsiveContainer,
   LineChart,
@@ -9,20 +8,16 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
 } from "recharts";
 
-import {
-  ResasPref,
-  ResasPrefPopComp,
-  ResasPrefPopCompData1,
-  ResasPrefPopCompData2,
-} from "lib/type";
+import { ResasPref, ResasPrefPopComp } from "lib/type";
 import { CHART_LINE_COLORS } from "lib/const";
-
 import { useCheckedPrefsValue } from "context/CheckedPrefsProvider";
 import { useSelectedDemogrValue } from "context/SelectedDemogrProvider";
 
+/**
+ * 都道府県別人口推移グラフ
+ */
 const PrefChart = ({
   prefDatas,
   prefPopComps,
@@ -30,18 +25,21 @@ const PrefChart = ({
   prefDatas: Array<ResasPref>;
   prefPopComps: Array<ResasPrefPopComp>;
 }) => {
-  console.log("GRAPH");
   const checkedPrefs = useCheckedPrefsValue();
   const selectedDemogr = useSelectedDemogrValue();
 
+  // Rechartsグラフ用データ
   let data: Array<{ [key: string]: number }> = [];
 
+  // データが無い場合
   if (!data.length) {
+    // データがなくてもグラフに年代が表示されるようにする
     prefPopComps[0].data[selectedDemogr].data.map((elem) => {
       data.push({ year: elem.year });
     });
   }
 
+  // 都道府県ボタンと、人口構成ボタンの状態に合わせて、Rechartsグラフ用のデータを生成
   checkedPrefs.map((checkedPref) => {
     const checkedPrefIndex = checkedPref - 1;
     prefPopComps[checkedPrefIndex].data[selectedDemogr].data.map(
@@ -50,8 +48,6 @@ const PrefChart = ({
       }
     );
   });
-
-  console.log(data);
 
   return (
     <ResponsiveContainer width="100%" aspect={1.6}>

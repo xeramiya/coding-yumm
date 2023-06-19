@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import PrefChart from "components/PrefChart";
 import PrefButtonPanel from "components/PrefButtonPanel/PrefButtonPanel";
 import DemogrButtonPanel from "components/DemogrButtonPanel";
@@ -10,7 +10,7 @@ import { ResasPref, ResasPrefPopComp } from "lib/type";
 export default async function Home() {
   // RESAS APIから都道府県一覧を取得
   const prefDatas: Array<ResasPref> = await getResasData(`api/v1/prefectures`);
-  // RESAS APIから人口構成を取得
+  // RESAS APIから全都道府県の人口構成を取得
   const prefPopComps: Array<ResasPrefPopComp> = await Promise.all(
     prefDatas.map(async (elem) => {
       const params = `api/v1/population/composition/perYear?prefCode=${elem.prefCode}&cityCode=-`;
