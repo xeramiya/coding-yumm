@@ -4,11 +4,7 @@ import { ResasPref } from "lib/type";
 /**
  * 都道府県ボタンパネル
  */
-const PrefButtonPanel = ({
-  prefDatas,
-}: {
-  prefDatas: Array<ResasPref>;
-}) => {
+const PrefButtonPanel = ({ prefDatas }: { prefDatas: Array<ResasPref> }) => {
   return (
     <ul className="pref-button-panel">
       {prefDatas.map((elem: ResasPref) => {

@@ -58,10 +58,7 @@ const PrefButton = ({ prefData }: { prefData: ResasPref }) => {
         id={prefButtonId}
         onChange={(event) => togglePref(event)}
       />
-      <label
-        htmlFor={prefButtonId}
-        style={{ borderColor: `${color}` }}
-      >
+      <label htmlFor={prefButtonId} style={{ borderColor: `${color}` }}>
         {prefData.prefName}
       </label>
     </div>
