@@ -60,7 +60,7 @@ const PrefButton = ({ prefData }: { prefData: ResasPref }) => {
       />
       <label
         htmlFor={prefButtonId}
-        style={{ border: `solid 2px ${color}` }}
+        style={{ borderColor: `${color}` }}
       >
         {prefData.prefName}
       </label>

@@ -145,9 +145,10 @@ main {
     background-color: $shadow-color;
   }
   input[type="checkbox"]:checked + label {
+    border: 0.16rem solid;
     background-color: $background-color;
     color: $char-main-color;
-    // borderはcomponent内で定義
+    // border-colorはcomponent内で定義
   }
 }
 input[type="checkbox"] {
