@@ -32,13 +32,17 @@ const DemogrButtonPanel = () => {
   const selectedDemogur = useSelectedDemogrValue();
 
   const changeDemogr = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("おされた！")
     const targetValue = Number(
       event.target.id.substring(demogrButtonIdPrefix.length)
     );
     setSelectedDemogr(targetValue);
+    console.log('TARGET:', targetValue)
+    console.log('SELECTED:', selectedDemogur)
   };
 
   console.log("RENDERED: DEMOGUR BUTTON PANEL");
+  console.log("selectedDemogr", selectedDemogur)
   return (
     <ul className="demogr-button-panel">
       {allDemogrs.map((elem) => {
