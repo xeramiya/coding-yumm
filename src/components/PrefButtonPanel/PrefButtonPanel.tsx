@@ -3,7 +3,7 @@ import { getResasData } from "lib/api";
 import PrefButton from "components/PrefButtonPanel/PrefButton";
 import { ResasPref } from "lib/type";
 
-const PrefButtonList = async ({
+const PrefButtonPanel = async ({
   prefDatas,
 }: {
   prefDatas: Array<ResasPref>;
@@ -21,4 +21,4 @@ const PrefButtonList = async ({
   );
 };
 
-export default PrefButtonList;
+export default PrefButtonPanel;
