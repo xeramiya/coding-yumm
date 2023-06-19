@@ -141,11 +141,11 @@ main {
     padding-right: 0.6rem;
     box-sizing: border-box;
     border-radius: 1rem;
+    border: 0.16rem solid;
     color: $char-note-color;
     background-color: $shadow-color;
   }
   input[type="checkbox"]:checked + label {
-    border: 0.16rem solid;
     background-color: $background-color;
     color: $char-main-color;
     // border-colorはcomponent内で定義
