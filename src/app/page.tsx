@@ -24,17 +24,17 @@ export default async function Home() {
         <SelectedDemogrProvider>
           <article>
             <section>
-              <h3 className="section-caption">都道府県選択ボタン</h3>
-              <PrefButtonPanel prefDatas={prefDatas} />
+              <h3 className="section-caption">都道府県別人口推移グラフ</h3>
+              <PrefChart prefDatas={prefDatas} prefPopComps={prefPopComps} />
             </section>
+            <hr />
             <section>
               <h3 className="section-caption">人口構成切替ボタン</h3>
               <DemogrButtonPanel />
             </section>
-            <hr />
             <section>
-              <h3 className="section-caption">都道府県別人口推移グラフ</h3>
-              <PrefChart prefDatas={prefDatas} prefPopComps={prefPopComps} />
+              <h3 className="section-caption">都道府県選択ボタン</h3>
+              <PrefButtonPanel prefDatas={prefDatas} />
             </section>
           </article>
         </SelectedDemogrProvider>
