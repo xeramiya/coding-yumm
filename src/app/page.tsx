@@ -1,7 +1,7 @@
 import React from "react";
 import PrefChart from "components/PrefChart";
 import PrefButtonPanel from "components/PrefButtonPanel/PrefButtonPanel";
-import DemogrButtonPanel from "components/DemogrButtonPanel";
+import DemogrButtonPanel from "components/DemogrButtonPanel/DemogrButtonPanel";
 import { CheckedPrefsProvider } from "context/CheckedPrefsProvider";
 import { SelectedDemogrProvider } from "context/SelectedDemogrProvider";
 import { getResasData } from "lib/api";
